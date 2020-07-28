@@ -9,3 +9,11 @@
  * 5. set expectations for bootcamps
  *
  */
+let foo = {
+  x: "bar",
+  "0": "baz",
+};
+
+for (var k in foo) {
+  console.log(`${k}: ${foo[k]}`);
+}

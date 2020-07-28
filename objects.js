@@ -67,9 +67,9 @@ const foo = {
  * special version of an object.
  */
 const stringLiteral = "Strings are objects, too.";
-console.log(stringLiteral.length);
-console.log(stringLiteral[2]);
-console.log(stringLiteral.charAt(3));
+// console.log(stringLiteral.length);
+// console.log(stringLiteral[2]);
+// console.log(stringLiteral.charAt(3));
 
 const stringLiteralAnatomy = {
   0: "S",
@@ -90,16 +90,19 @@ const stringLiteralAnatomy = {
  * Build a function that takes in kitchen inventory
  * objects and a recipe object and returns if there
  * are enough ingredients available for the recipe.
+ *
+ * Return true if enough ingredients and false if not.
  */
 const cupboard = {
   bakingPowder: 15,
+  eggs: 2,
   flour: 10,
   sugar: 20,
   vanilla: 10,
 };
 const refrigerator = {
   butter: 4,
-  eggs: 12,
+  eggs: 2,
   milk: 1,
 };
 const recipe = {
@@ -109,6 +112,31 @@ const recipe = {
   sugar: 10,
   vanilla: 2,
 };
+
+function finalRecipe(kitchenInventory1, kitchenInventory2, recipe) {
+  // iterate through my recipe
+  // for each ingredient
+  // check if enough ingredient in each inventory
+  // if not enough return false
+  // if enough return true
+
+  for (let ingredient in recipe) {
+    let recipeIngredientAmount = recipe[ingredient];
+    const kitchenInventory1IngredientAmount = kitchenInventory1[ingredient]; // [ingredient] = property access
+    const kitchenInventory2IngredientAmount = kitchenInventory2[ingredient];
+    const totalInventoryIngredientAmount =
+      kitchenInventory1IngredientAmount + kitchenInventory2IngredientAmount;
+
+    if (recipeIngredientAmount > totalInventoryIngredientAmount) {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+const result = finalRecipe(cupboard, refrigerator, recipe);
+console.log(result);
 
 /**
  * Now build a function that takes in kitchen inventory
