@@ -1,6 +1,6 @@
-/**
- * Objects are containers for data
- */
+///**
+//  * Objects are containers for data
+//  */
 // const cupboard = {
 //   bakingPowder: 15,
 //   flour: 10,
@@ -93,25 +93,25 @@ const stringLiteralAnatomy = {
  *
  * Return true if enough ingredients and false if not.
  */
-const cupboard = {
-  bakingPowder: 15,
-  eggs: 2,
-  flour: 10,
-  sugar: 20,
-  vanilla: 10,
-};
-const refrigerator = {
-  butter: 4,
-  eggs: 2,
-  milk: 1,
-};
-const recipe = {
-  butter: 2,
-  eggs: 3,
-  flour: 7,
-  sugar: 10,
-  vanilla: 2,
-};
+// const cupboard = {
+//   bakingPowder: 15,
+//   eggs: 2,
+//   flour: 10,
+//   sugar: 20,
+//   vanilla: 10,
+// };
+// const refrigerator = {
+//   butter: 4,
+//   eggs: 2,
+//   milk: 1,
+// };
+// const recipe = {
+//   butter: 2,
+//   eggs: 3,
+//   flour: 7,
+//   sugar: 10,
+//   vanilla: 2,
+// };
 
 function finalRecipe(kitchenInventory1, kitchenInventory2, recipe) {
   // iterate through my recipe
@@ -152,6 +152,21 @@ console.log(result);
  *   vanilla: '5 tsp.'
  * }
  */
+const cupboard = {
+  bakingPowder: 15,
+  eggs: 2,
+  flour: 10,
+  sugar: 20,
+  vanilla: 10,
+};
+const refrigerator = { butter: 4, eggs: 2, milk: 1 };
+const recipe = {
+  butter: 2,
+  eggs: 3,
+  flour: 7,
+  sugar: 10,
+  vanilla: 2,
+};
 const recipe2 = {
   butter: 2,
   eggs: 3,
@@ -170,3 +185,28 @@ const refrigeratorUnits = {
   eggs: "qty.",
   milk: "oz.",
 };
+
+function checkInventory(kitchenInventories, recipe) {
+  // steps
+  //  walk to refrigerator, open fridge, remove flour
+  //  walk to cupboard, open cupboard, remove flour, measure flour, read the recipe amount, compare those amounts
+  //  "no flour"
+  // PSUEDO CODE
+  // count ingredient amounts
+  // const ingredientAmounts = { flour: 10, eggs: 4 }
+  // loop through kitchenInventories - cupboard, fridge
+  // {
+  // loop through recipe object - flour
+  // {
+  // - reference kitchenInventory object - fridge object
+  // - do a property lookup on kitchenInventory object for key "ingredient" and store in variable ingredientInventoryAmount
+  // - const ingredientInventoryAmount = fridge[flour] || 0
+  // - add ingredientInventoryAmount to the "ingredient" property on the ingredientAmount object
+  // - ingredientAmounts[flour] = ingredientAmounts[flour] + ingredientInventoryAmount
+  // }
+  // }
+  // return true if we have enough ingredients
+  // or return a list of ingredients and the amounts that are missing
+}
+
+checkInventory([cupboard, refrigerator, cupboard2], recipe);
