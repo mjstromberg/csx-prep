@@ -58,6 +58,7 @@ console.log(removeProperty(object, "d"));
  */
 
 function compareObjects(obj1, obj2) {
+  // check if objects have the same number of keys
   const obj1Length = Object.keys(obj1).length;
   const obj2Length = Object.keys(obj2).length;
   if (obj1Length !== obj2Length) {
@@ -91,13 +92,62 @@ test("Test #6", compareObjects(object1, object4), false);
  */
 
 function deeplyCompareObjects(obj1, obj2) {
-  // write algorithm here
+  // get object lengths
+  const obj1Length = Object.keys(obj1).length;
+  const obj2Length = Object.keys(obj2).length;
+  // if object lengths are not equal
+  if (obj1Length !== obj2Length) {
+    // bail aka return false
+    return false;
+  }
+
+  // iterate through the first object by keys
+  for (let key in obj1) {
+    // get value associated with the key on the first object
+    const value1 = obj1[key];
+    // get value associated with the key on the second object
+    const value2 = obj2[key];
+    // if both values are not real objects (base case) and if values are not equal
+    if (
+      (typeof value1 !== "object" || value1 === null) &&
+      (typeof value2 !== "object" || value2 === null)
+    ) {
+      if (value1 !== value2) {
+        // bail
+        return false;
+      }
+      // if one value is an object and the other value is not
+    } else if (
+      typeof value1 === "object" &&
+      value1 !== null &&
+      (typeof value2 !== "object" || value2 === null) &&
+      typeof value2 === "object" &&
+      value2 !== null &&
+      (typeof value1 !== "object" || value1 === null)
+    ) {
+      // bail
+      return false;
+      // else then both values are object (recursive case)
+    } else {
+      // call the function again but with the values as parameters
+      const recursiveValue = deeplyCompareObjects(value1, value2);
+      // if recursiveValue is false
+      if (recursiveValue === false) {
+        // bail
+        return false;
+      }
+    }
+  }
+
+  // return true
+  return true;
 }
 
 const object5 = { a: 1, b: { c: 2 }, d: 3 };
 const object6 = { a: 1, b: { c: 2 }, d: 3 };
 const object7 = { a: 1, b: { c: "foo" }, d: 3 };
 const object8 = { a: 1, b: { c: 2 }, d: 3, e: 4 };
+// const object9 = { a: { b: 1 }, c: { d: 2 }, e: 3 };
 
 console.log("\nDeeply Compare Objects");
 test("Test #4", deeplyCompareObjects(object5, object6), true);
