@@ -39,4 +39,24 @@
  * // }
  */
 
-function updateHottestTemperature(temps, recordBook) {}
+function updateHottestTemperature(temps, recordBook) {
+  // WRITE CODE HERE
+}
+
+// TEST
+const feb2020StateTemps = {
+  california: 131,
+  arizona: 145,
+  alaska: 91,
+  utah: 111,
+};
+
+const recordBook = {
+  california: 128,
+  alaska: 95,
+  colorado: 102,
+  utah: 105,
+};
+
+const result = updateHottestTemperature(feb2020StateTemps, recordBook);
+console.log(result);
